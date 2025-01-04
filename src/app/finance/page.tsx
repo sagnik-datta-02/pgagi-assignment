@@ -26,7 +26,7 @@ export default function FinancePage() {
   return (
     <SignedIn>
     <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-6">Financial Dashboard</h1>
+      <div className='dark:text-white text-gray-600' style={{ textAlign: 'center', fontSize: '48px', fontWeight: 'bold', marginBottom: '20px', textShadow: '2px 2px 4px rgba(0,0,0,0.3)' }}>Financial Dashboard</div>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2">
           <StockSearch 
