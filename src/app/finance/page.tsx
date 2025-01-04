@@ -5,26 +5,12 @@ import { StockSearch } from '@/components/finance/stock-search';
 import { StockChart } from '@/components/finance/stock-chart';
 import { NewsSection } from '@/components/finance/news-section';
 import { TimeSeriesData } from '@/types/finance';
-import {
-    SignedIn,
-    
-  } from '@clerk/nextjs'
-
 
 export default function FinancePage() {
   const [stockData, setStockData] = useState<TimeSeriesData | null>(null);
   const [isLoading, setIsLoading] = useState(false);
-//   const { user } = useUser()
-//   if (!user) {
-//     return (
-//       <div className="flex items-center justify-center min-h-screen">
-//         <SignIn />
-//       </div>
-//     );
-//   }
 
   return (
-    <SignedIn>
     <div className="container mx-auto p-4">
       <div className='dark:text-white text-gray-600' style={{ textAlign: 'center', fontSize: '48px', fontWeight: 'bold', marginBottom: '20px', textShadow: '2px 2px 4px rgba(0,0,0,0.3)' }}>Financial Dashboard</div>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -45,6 +31,5 @@ export default function FinancePage() {
         </div>
       </div>
     </div>
-    </SignedIn>
   );
 }
