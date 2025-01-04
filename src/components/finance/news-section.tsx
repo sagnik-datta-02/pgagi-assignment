@@ -39,7 +39,7 @@ export function NewsSection() {
 
   return (
     <div className="space-y-4">
-      <h2 className="text-xl font-semibold">Latest News</h2>
+      <h2 className="text-xl font-semibold">Latest News of INR Forex</h2>
       {news.map((article, index) => (
         <Card key={index}>
           <CardContent className="pt-6">

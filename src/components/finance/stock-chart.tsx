@@ -10,6 +10,7 @@ import {
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
+  Legend,
 } from "recharts";
 
 interface StockChartProps {
@@ -18,7 +19,7 @@ interface StockChartProps {
 
 export function StockChart({ data }: StockChartProps) {
   const chartData = Object.entries(data["Time Series (Daily)"])
-    .slice(0, 30) 
+    .slice(0, 30)
     .map(([date, values]) => ({
       date,
       close: parseFloat(values["4. close"]),
@@ -43,23 +44,46 @@ export function StockChart({ data }: StockChartProps) {
           <ResponsiveContainer width="100%" height="100%">
             <LineChart data={chartData}>
               <CartesianGrid strokeDasharray="3 3" />
-              <XAxis 
-                dataKey="date"
-                tickFormatter={(date) => new Date(date).toLocaleDateString()}
+              <XAxis
+              dataKey="date"
+              tickFormatter={(date) => new Date(date).toLocaleDateString()}
               />
               <YAxis />
               <Tooltip
-                contentStyle={{
-                  backgroundColor: "hsl(var(--background))",
-                  border: "1px solid hsl(var(--border))",
-                }}
-                labelFormatter={(date) => new Date(date).toLocaleDateString()}
+              contentStyle={{
+                backgroundColor: "hsl(var(--background))",
+                border: "1px solid hsl(var(--border))",
+              }}
+              labelFormatter={(date) => new Date(date).toLocaleDateString()}
+              />
+              <Legend />
+              <Line
+              type="monotone"
+              dataKey="close"
+              stroke="#8884d8"
+              dot={false}
+              name="Close"
               />
               <Line
-                type="monotone"
-                dataKey="close"
-                stroke="hsl(var(--primary))"
-                dot={false}
+              type="monotone"
+              dataKey="open"
+              stroke="#82ca9d"
+              dot={false}
+              name="Open"
+              />
+              <Line
+              type="monotone"
+              dataKey="high"
+              stroke="#ffc658"
+              dot={false}
+              name="High"
+              />
+              <Line
+              type="monotone"
+              dataKey="low"
+              stroke="#ff7300"
+              dot={false}
+              name="Low"
               />
             </LineChart>
           </ResponsiveContainer>

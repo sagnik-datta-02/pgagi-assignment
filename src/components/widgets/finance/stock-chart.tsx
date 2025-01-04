@@ -1,51 +1,93 @@
 "use client";
 
-import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { StockData } from "@/lib/api/types";
+import { TimeSeriesData } from "@/types/finance";
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+  Legend,
+} from "recharts";
 
 interface StockChartProps {
-  data: StockData;
+  data: TimeSeriesData;
 }
 
 export function StockChart({ data }: StockChartProps) {
+  const chartData = Object.entries(data["Time Series (Daily)"])
+    .slice(0, 30)
+    .map(([date, values]) => ({
+      date,
+      close: parseFloat(values["4. close"]),
+      open: parseFloat(values["1. open"]),
+      high: parseFloat(values["2. high"]),
+      low: parseFloat(values["3. low"]),
+    }))
+    .reverse();
+
   return (
-    <Card className="w-full h-[300px]">
+    <Card className="mt-6">
       <CardHeader>
-        <CardTitle>{data.symbol} Stock Price</CardTitle>
+        <CardTitle className="flex items-center justify-between">
+          <span>{data["Meta Data"]["2. Symbol"]} Stock Price</span>
+          <span className="text-sm text-muted-foreground">
+            Last updated: {data["Meta Data"]["3. Last Refreshed"]}
+          </span>
+        </CardTitle>
       </CardHeader>
       <CardContent>
-        <ResponsiveContainer width="100%" height={200}>
-          <LineChart data={data.historicalData}>
-            <XAxis 
+        <div className="h-[400px]">
+          <ResponsiveContainer width="100%" height="100%">
+            <LineChart data={chartData}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis
               dataKey="date"
-              axisLine={true}
-              tickLine={true}
-              scale="auto"
-              padding={{ left: 10, right: 10 }}
-            />
-            <YAxis
-              axisLine={true}
-              tickLine={true}
-              scale="auto"
-              padding={{ top: 10, bottom: 10 }}
-            />
-            <Tooltip
+              tickFormatter={(date) => new Date(date).toLocaleDateString()}
+              />
+              <YAxis />
+              <Tooltip
               contentStyle={{
                 backgroundColor: "hsl(var(--background))",
                 border: "1px solid hsl(var(--border))",
-                borderRadius: "var(--radius)",
               }}
-            />
-            <Line
+              labelFormatter={(date) => new Date(date).toLocaleDateString()}
+              />
+              <Legend />
+              <Line
               type="monotone"
-              dataKey="price"
-              stroke="hsl(var(--primary))"
-              strokeWidth={2}
+              dataKey="close"
+              stroke="#8884d8"
               dot={false}
-            />
-          </LineChart>
-        </ResponsiveContainer>
+              name="Close"
+              />
+              <Line
+              type="monotone"
+              dataKey="open"
+              stroke="#82ca9d"
+              dot={false}
+              name="Open"
+              />
+              <Line
+              type="monotone"
+              dataKey="high"
+              stroke="#ffc658"
+              dot={false}
+              name="High"
+              />
+              <Line
+              type="monotone"
+              dataKey="low"
+              stroke="#ff7300"
+              dot={false}
+              name="Low"
+              />
+            </LineChart>
+          </ResponsiveContainer>
+        </div>
       </CardContent>
     </Card>
   );
