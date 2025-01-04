@@ -1,5 +1,4 @@
 "use client";
-
 import axios from 'axios';
 
 export const weatherApi = axios.create({

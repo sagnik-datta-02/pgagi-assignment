@@ -3,7 +3,7 @@
 import { WeatherWidget } from "@/components/widgets/weather/weather-widget";
 import { NewsWidget } from "@/components/widgets/news/news-widget";
 import { FinanceWidget } from "@/components/widgets/finance/finance-widget";
-
+import { GitHubCard } from "@/components/widgets/github/github-card";
 export default function Home() {
   return (
     
@@ -11,6 +11,7 @@ export default function Home() {
         <WeatherWidget />
         <NewsWidget />
         <FinanceWidget />
+        <GitHubCard />
       </div>
     
   );
