@@ -30,7 +30,7 @@ export function StockChart({ data }: StockChartProps) {
     .reverse();
 
   return (
-    <Card className="mt-6">
+    <Card className="">
       <CardHeader>
         <CardTitle className="flex items-center justify-between">
           <span>{data["Meta Data"]["2. Symbol"]} Stock Price</span>
@@ -40,7 +40,7 @@ export function StockChart({ data }: StockChartProps) {
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="h-[400px]">
+        <div className="h-[250px]">
           <ResponsiveContainer width="100%" height="100%">
             <LineChart data={chartData}>
               <CartesianGrid strokeDasharray="3 3" />

@@ -61,7 +61,7 @@ export function GitHubCard() {
       }
     return (
         user && (
-            <Card className="w-full shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <Card className="w-auto shadow-lg hover:shadow-xl transition-shadow duration-300">
                 <CardHeader className="flex items-center space-x-4">
                     <img src={user.avatar_url} alt={`${user.login}'s avatar`} className="w-16 h-16 rounded-full border-2 border-primary" />
                     <div>
@@ -73,11 +73,13 @@ export function GitHubCard() {
                     <p className="text-sm text-muted-foreground">{user.bio}</p>
                     <p className="text-sm text-muted-foreground">{user.company}</p>
                     <p className="text-sm text-muted-foreground">{user.location}</p>
-                    <div className="mt-4 text-lg font-semibold text-primary">
-                        Public Repos: {user.public_repos} · Followers: {user.followers} · Following: {user.following}
+                    <div className="mt-4 text-lg font-semibold text-primary text-center">
+                        <div>Public Repos: {user.public_repos}</div>
+                        <div>Followers: {user.followers}</div>
+                        <div>Following: {user.following}</div>
                     </div>
                     <Link href={user.html_url}>
-                        <button className="mt-2 px-4 py-2 text-sm font-semibold text-white bg-primary rounded-full hover:bg-primary-dark transition-colors duration-300">
+                        <button className="mt-2 px-4 py-2 text-sm font-semibold text-white dark:text-black bg-primary rounded-full hover:bg-primary-dark transition-colors duration-300 mx-auto block">
                             View Profile
                         </button>
                     </Link>
