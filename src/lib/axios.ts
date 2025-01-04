@@ -3,7 +3,7 @@
 import axios from 'axios';
 
 export const weatherApi = axios.create({
-  baseURL: 'http://api.openweathermap.org',
+  baseURL: 'https://api.openweathermap.org',
 });
 
 export const weatherApiService = {
