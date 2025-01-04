@@ -3,18 +3,17 @@ import React from 'react';
 import { NewsSearch } from '@/components/news/news-search';
 import {
     SignedIn,
-    SignIn,
-    useUser,
+    
   } from '@clerk/nextjs'
 export default function NewsPage () {
-    const { user } = useUser()
-  if (!user) {
-    return (
-      <div className="flex items-center justify-center min-h-screen">
-        <SignIn />
-      </div>
-    );
-  }
+//     const { user } = useUser()
+//   if (!user) {
+//     return (
+//       <div className="flex items-center justify-center min-h-screen">
+//         <SignIn />
+//       </div>
+//     );
+//   }
     return (
         <SignedIn>
         <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>

@@ -6,21 +6,20 @@ import { StateSelect } from '@/components/weather/state-select';
 import { WeatherResponse } from '@/types/weather';
 import {
     SignedIn,
-    SignIn,
-    useUser,
+    
   } from '@clerk/nextjs'
 
 export default function WeatherPage() {
   const [weatherData, setWeatherData] = useState<WeatherResponse | null>(null);
   const [isLoading, setIsLoading] = useState(false);
-    const { user } = useUser()
-  if (!user) {
-    return (
-      <div className="flex items-center justify-center min-h-screen">
-        <SignIn />
-      </div>
-    );
-  }
+//     const { user } = useUser()
+//   if (!user) {
+//     return (
+//       <div className="flex items-center justify-center min-h-screen">
+//         <SignIn />
+//       </div>
+//     );
+//   }
   return (
     <SignedIn>
     <div className="container mx-auto p-4">

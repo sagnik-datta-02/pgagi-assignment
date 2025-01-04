@@ -7,22 +7,21 @@ import { NewsSection } from '@/components/finance/news-section';
 import { TimeSeriesData } from '@/types/finance';
 import {
     SignedIn,
-    SignIn,
-    useUser,
+    
   } from '@clerk/nextjs'
 
 
 export default function FinancePage() {
   const [stockData, setStockData] = useState<TimeSeriesData | null>(null);
   const [isLoading, setIsLoading] = useState(false);
-  const { user } = useUser()
-  if (!user) {
-    return (
-      <div className="flex items-center justify-center min-h-screen">
-        <SignIn />
-      </div>
-    );
-  }
+//   const { user } = useUser()
+//   if (!user) {
+//     return (
+//       <div className="flex items-center justify-center min-h-screen">
+//         <SignIn />
+//       </div>
+//     );
+//   }
 
   return (
     <SignedIn>
