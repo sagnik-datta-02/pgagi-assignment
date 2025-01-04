@@ -67,13 +67,13 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
             Dashboard
           </Link>
           <Link
-            href="#weather"
+            href="weather"
             className="flex items-center space-x-2 rounded-lg px-3 py-2 text-sm font-medium hover:bg-accent"
           >
             Weather
           </Link>
           <Link
-            href="#finance"
+            href="finance"
             className="flex items-center space-x-2 rounded-lg px-3 py-2 text-sm font-medium hover:bg-accent"
           >
             Finance
