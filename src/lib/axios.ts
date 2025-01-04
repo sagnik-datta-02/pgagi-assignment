@@ -82,7 +82,8 @@ export const newsApiService = {
     newsApi.get('/everything', {
       params: {
         q: query,
-        pageSize: 5,
+        pageSize: 20,
+        sortBy: 'relevancy',
       },
     }),
     getTopHeadlines: () =>

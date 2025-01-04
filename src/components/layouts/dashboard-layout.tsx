@@ -18,7 +18,7 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
     <div className="min-h-screen bg-background">
       
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container flex h-14 items-center">
+        <div className=" flex h-14 items-center justify-between px-4">
           <div className="mr-4 flex">
             <Button
               variant="ghost"
@@ -27,26 +27,24 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
             >
               <span className="sr-only">Toggle sidebar</span>
               <svg
-                className="h-6 w-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+          className="h-6 w-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d={sidebarOpen ? "M4 6h16M4 12h16M4 18h16" : "M6 18L18 6M6 6l12 12"}
-                />
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d={sidebarOpen ? "M4 6h16M4 12h16M4 18h16" : "M6 18L18 6M6 6l12 12"}
+          />
               </svg>
             </Button>
             <Link href="/" className="flex items-center space-x-2">
               <span className="font-bold">Analytics Dashboard</span>
             </Link>
           </div>
-          <div className="flex-1" />
-          <div className="flex items-center space-x-4">
-       
+          <div className="flex items-center justify-end space-x-4">
             <ModeToggle />
             <UserNav />
           </div>
@@ -63,23 +61,34 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
         <Link
             href="/"
             className="flex items-center space-x-2 rounded-lg px-3 py-2 text-sm font-medium hover:bg-accent"
+            onClick={() => setSidebarOpen(!sidebarOpen)}
           >
             Dashboard
           </Link>
           <Link
-            href="weather"
+            href="/weather"
             className="flex items-center space-x-2 rounded-lg px-3 py-2 text-sm font-medium hover:bg-accent"
+            onClick={() => setSidebarOpen(!sidebarOpen)}
           >
             Weather
           </Link>
           <Link
-            href="finance"
+            href="/finance"
             className="flex items-center space-x-2 rounded-lg px-3 py-2 text-sm font-medium hover:bg-accent"
+            onClick={() => setSidebarOpen(!sidebarOpen)}
           >
             Finance
           </Link>
+          <Link
+            href="/news"
+            className="flex items-center space-x-2 rounded-lg px-3 py-2 text-sm font-medium hover:bg-accent"
+            onClick={() => setSidebarOpen(!sidebarOpen)}
+          >
+            News
+          </Link>
         </nav>
       </div>
+
 
       
       <main
