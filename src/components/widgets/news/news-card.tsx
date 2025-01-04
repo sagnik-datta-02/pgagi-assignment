@@ -10,7 +10,7 @@ interface NewsCardProps {
 
 export function NewsCard({ article }: NewsCardProps) {
   return (
-    <Card className="w-full p-1">
+    <Card className="w-full">
       <CardHeader>
         <CardTitle className="text-lg line-clamp-2">{article.title}</CardTitle>
       </CardHeader>
@@ -26,7 +26,7 @@ export function NewsCard({ article }: NewsCardProps) {
         </div>
         
         <Link href={article.url}>
-            <button className="mt-4 px-4 py-2 text-sm font-semibold text-white dark:text-black bg-primary rounded hover:bg-primary-dark transition-colors duration-300 dark:bg-primary-light dark:hover:bg-primary">
+            <button className="mt-2 px-4 py-1 text-sm font-semibold text-white dark:text-black bg-primary rounded hover:bg-primary-dark transition-colors duration-300 dark:bg-primary-light dark:hover:bg-primary">
             Read more
             </button>
         </Link>

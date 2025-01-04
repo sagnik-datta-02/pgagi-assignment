@@ -33,5 +33,10 @@ export function WeatherWidget() {
     fetchWeather();
   }, []);
 
-  return <WeatherCard data={weatherData} isLoading={isLoading} />;
+  return( 
+    <div className="space-y-4">
+      <h2 className="text-xl font-semibold">Latest Weather</h2>
+  <WeatherCard data={weatherData} isLoading={isLoading} />
+  </div>
+  );
 }
