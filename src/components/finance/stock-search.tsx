@@ -85,19 +85,21 @@ export function StockSearch({ onStockData, onLoadingChange }: StockSearchProps) 
           <DropdownMenuContent className="w-full">
             <DropdownMenuLabel>Stock Results</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            {results.map((result) => (
+            <div className="max-h-60 overflow-y-auto">
+              {results.map((result) => (
               <DropdownMenuItem
                 key={result["1. symbol"]}
                 onSelect={() => handleStockSelect(result["1. symbol"])}
               >
                 <div className="flex flex-col">
-                  <span className="font-medium">{result["2. name"]}</span>
-                  <span className="text-sm text-muted-foreground">
-                    {result["1. symbol"]} • {result["2. name"]}
-                  </span>
+                <span className="font-medium">{result["2. name"]}</span>
+                <span className="text-sm text-muted-foreground">
+                  {result["1. symbol"]} • {result["2. name"]}
+                </span>
                 </div>
               </DropdownMenuItem>
-            ))}
+              ))}
+            </div>
           </DropdownMenuContent>
         </DropdownMenu>
       )}
